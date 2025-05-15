@@ -49,7 +49,7 @@ class RegisterController extends Controller
     // ✅ Method untuk tampilkan form register admin
     public function showAdminRegisterForm()
     {
-        return view('auth.register_admin');
+        return view('auth.admin-register');
     }
 
     // ✅ Tambahan opsional: proses register user
