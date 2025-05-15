@@ -4,7 +4,7 @@
     <div class="container ">
         <div class="row ">
             <div class="col-12 ">
-                <a href="{{ url()->previous() }}" class="btn btn-light mb-4"><i class="bi bi-arrow-left"></i></a>
+                <a href='questions' class="btn btn-light mb-4"><i class="bi bi-arrow-left"></i></a>
 
                 <div class="question-details ">
                     <div class="user-info d-flex align-items-start gap-2 mb-2">

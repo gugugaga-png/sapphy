@@ -52,7 +52,7 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'role_id' => ['required', 'exists:roles,id'], // Tambahkan ini
+            'role_id' => ['nullable', 'exists:roles,id'], // tidak wajib, valid kalau ada, // Tambahkan ini
         ]);
     }
     
@@ -69,7 +69,7 @@ class RegisterController extends Controller
         'name' => $data['name'],
         'email' => $data['email'],
         'password' => Hash::make($data['password']),
-        'role_id' => $data['role_id'], // Tambahkan ini
+        'role_id' => $data['role_id'] ?? 2, // jika tidak ada, pakai role_id 2 (user) // Tambahkan ini
     ]);
 }
 

@@ -47,7 +47,23 @@
                                    class="form-control" name="password_confirmation" required autocomplete="new-password">
                         </div>
 
-                         <input type="hidden" name="role_id" value="2">
+                        <div class="mb-3">
+    <label for="role_id" class="form-label">{{ __('Role') }}</label>
+    <select name="role_id" id="role_id" class="form-select @error('role_id') is-invalid @enderror" required>
+        <option value="">-- Pilih Role --</option>
+        @foreach(\App\Models\Role::all() as $role)
+            <option value="{{ $role->id }}" {{ old('role_id') == $role->id ? 'selected' : '' }}>
+                {{ $role->name }}
+            </option>
+        @endforeach
+    </select>
+
+    @error('role_id')
+        <span class="invalid-feedback" role="alert">
+            <strong>{{ $message }}</strong>
+        </span>
+    @enderror
+</div>
 
 
                         {{-- Hidden role_id --}}

@@ -9,13 +9,25 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Middleware\RoleMiddleware;
 use App\Http\Controllers\ProfileController;
-Route::get('/', [AuthController::class, 'showLoginForm']);
 
+Route::get('/', [AuthController::class, 'showLoginForm']);
 Route::post('/', [AuthController::class, 'login']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Mengubah rute /home ke /questions
+Route::get('/home', function () {
+    return redirect('/questions');
+})->name('home');
+
+// Register untuk user biasa
+Route::get('/register', [RegisterController::class, 'showUserRegisterForm'])->name('register');
+Route::post('/register', [RegisterController::class, 'registerUser']);
+
+// Register untuk admin (di URL berbeda)
+Route::get('/admin/register', [RegisterController::class, 'showAdminRegisterForm'])->name('admin.register');
+Route::post('/admin/register', [RegisterController::class, 'registerAdmin']);
+
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
