@@ -10,9 +10,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Middleware\RoleMiddleware;
 use App\Http\Controllers\ProfileController;
 
-Route::get('/', function () {
-    return view('auth');
-});
+Route::post('/', [AuthController::class, 'login']);
 
 Auth::routes();
 
