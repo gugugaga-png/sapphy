@@ -14,7 +14,7 @@
                         @if(auth()->user()->profile_photo)
                             <img id="profileImagePreview" src="{{ asset('storage/' . auth()->user()->profile_photo) }}" alt="Foto Profil" style="width: 100%; height: 100%; object-fit: cover;">
                         @else
-                            <img id="profileImagePreview" src="{{ asset('image/default-avatar.jpg') }}" alt="Default Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+                            <img id="profileImagePreview" src="{{ asset('image/user.svg') }}" alt="Default Avatar" style="width: 100%; height: 100%; object-fit: cover;">
                         @endif
                         <div class="edit-icon">
                             <i class="bi bi-pencil-fill"></i>
