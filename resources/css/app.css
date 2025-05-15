@@ -1,0 +1,56 @@
+
+
+/* Custom Tailwind styling */
+body {
+    font-family: 'Inter', sans-serif !important;
+}
+.answer-content {
+    word-wrap: break-word;  /* Memecah kata panjang yang tidak bisa dibungkus */
+    overflow-wrap: break-word;  /* Menghindari overflow untuk teks panjang */
+    white-space: normal;  /* Pastikan teks tidak terpotong atau berjalan dalam satu baris */
+    max-height: 200px;  /* Atur tinggi maksimum jika diperlukan */
+    overflow: hidden;  /* Sembunyikan overflow jika tinggi maksimum tercapai */
+}
+
+@media (max-width: 767px) {
+    /* Mengatur agar navbar lebih fleksibel pada tampilan mobile */
+    .navbar-nav {
+      flex-direction: column;
+    }
+  }
+
+  .pagination {
+    justify-content: center;
+}
+
+.pagination .page-item {
+    margin: 0 5px;
+}
+
+.pagination .page-link {
+    padding: 8px 16px;
+}
+.btn-ask-question {
+    position: -webkit-sticky; /* Untuk Safari */
+    position: sticky;
+    bottom: 20px;
+    z-index: 10;
+}
+
+/* Menampilkan tombol hanya pada tampilan mobile */
+@media (min-width: 768px) {
+    .btn-ask-question {
+        display: none;
+    }
+}
+  
+/* Jangan import Bootstrap di sini! */
+
+
+/* Import Bootstrap CSS */
+
+
+/* Import Bootstrap Icons */
+@import 'node_modules/bootstrap-icons/font/bootstrap-icons.css';
+
+
