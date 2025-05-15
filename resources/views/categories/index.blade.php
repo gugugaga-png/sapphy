@@ -30,48 +30,56 @@
     <div class="card">
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-vcenter table-mobile-md card-table">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Nama Kategori</th>
-                            <th>Jumlah Pertanyaan</th>
-                            @if(auth()->user()->role->name === 'admin')
-                                <th>Aksi</th>
-                            @endif
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse ($categories as $index => $category)
-                            <tr>
-                                <td>{{ $index + 1 }}</td>
-                                <td>{{ $category->name }}</td>
-                                <td>{{ $category->questions_count }}</td>
-                                @if(auth()->user()->role->name === 'admin')
-                                    <td>
-                                        <div class="d-flex gap-2">
-                                            <button type="button" class="btn btn-sm btn-outline-yellow" data-bs-toggle="modal" data-bs-target="#editCategoryModal{{ $category->id }}">
-                                                <i class="ti ti-edit"></i> Edit
-                                            </button>
-                                            <form action="{{ route('categories.destroy', $category->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus kategori ini beserta semua pertanyaannya?');">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-outline-danger">
-                                                    <i class="ti ti-trash"></i> Hapus
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </td>
-                                @endif
-                            </tr>
-                        @empty
-                            <tr>
-                                <td colspan="4" class="text-center">Tidak ada kategori.</td>
-                            </tr>
-                        @endforelse
-                    </tbody>
-                </table>
-            </div>
+    <table class="table table-hover table-striped table-vcenter">
+        <thead class="table-light">
+            <tr>
+                <th>#</th>
+                <th>Nama Kategori</th>
+                <th>Jumlah Pertanyaan</th>
+                @if(auth()->user()->role->name === 'admin')
+                    <th>Aksi</th>
+                @endif
+            </tr>
+        </thead>
+        <tbody>
+            @forelse ($categories as $index => $category)
+                <tr>
+                    <td>{{ $index + 1 }}</td>
+                    <td>{{ $category->name }}</td>
+                    <td>{{ $category->questions_count }}</td>
+                    @if(auth()->user()->role->name === 'admin')
+                        <td>
+                            <div class="d-flex flex-wrap gap-2">
+                                <button type="button" 
+                                        class="btn btn-sm btn-outline-warning" 
+                                        data-bs-toggle="modal" 
+                                        data-bs-target="#editCategoryModal{{ $category->id }}">
+                                    <i class="ti ti-edit"></i> Edit
+                                </button>
+                                <form action="{{ route('categories.destroy', $category->id) }}" 
+                                      method="POST" 
+                                      onsubmit="return confirm('Yakin ingin menghapus kategori ini beserta semua pertanyaannya?');">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-outline-danger">
+                                        <i class="ti ti-trash"></i> Hapus
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    @endif
+                </tr>
+            @empty
+                <tr>
+                    <td colspan="{{ auth()->user()->role->name === 'admin' ? 4 : 3 }}" class="text-center text-muted">
+                        Tidak ada kategori.
+                    </td>
+                </tr>
+            @endforelse
+        </tbody>
+    </table>
+</div>
+
              <div class="mt-4">
                 {{ $categories->appends(['search' => request('search'), 'per_page' => request('per_page')])->links('pagination::bootstrap-5') }}
             </div>
