@@ -15,7 +15,7 @@
     </ul>
     @endif
 
-    @if(in_array(Route::currentRouteName(), ['questions.index', 'questions.category']))
+@if(Route::is('questions.index') || Route::is('questions.category.*'))
     <form action="#" class="me-3 d-flex" style="width:40%;" data-bs-toggle="modal" data-bs-target="#searchModal">
       <div class="input-group">
         <input type="text" class="form-control" placeholder="Cari pertanyaan..." readonly>
