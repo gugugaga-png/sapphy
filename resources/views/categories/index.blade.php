@@ -51,18 +51,18 @@
                         <td>
                             <div class="d-flex flex-wrap gap-2">
                                 <button type="button" 
-                                        class="btn btn-sm btn-outline-warning" 
+                                        class="btn btn-sm btn-light bg-yellow-lt" 
                                         data-bs-toggle="modal" 
                                         data-bs-target="#editCategoryModal{{ $category->id }}">
-                                    <i class="ti ti-edit"></i> Edit
+                                    <i class="bi bi-edit"></i> 
                                 </button>
                                 <form action="{{ route('categories.destroy', $category->id) }}" 
                                       method="POST" 
                                       onsubmit="return confirm('Yakin ingin menghapus kategori ini beserta semua pertanyaannya?');">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-outline-danger">
-                                        <i class="ti ti-trash"></i> Hapus
+                                    <button type="submit" class="btn btn-sm btn-light bg-red-lt ">
+                                        <i class="bi bi-trash"></i> 
                                     </button>
                                 </form>
                             </div>
