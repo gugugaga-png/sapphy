@@ -9,6 +9,7 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Middleware\RoleMiddleware;
 use App\Http\Controllers\ProfileController;
+Route::get('/', [AuthController::class, 'showLoginForm']);
 
 Route::post('/', [AuthController::class, 'login']);
 
