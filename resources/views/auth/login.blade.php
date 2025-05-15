@@ -3,15 +3,15 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-6">
-            <div class="card">
+        <div class="col-md-8 col-lg-4">
+            <div class="card text-center">
                 <div class="card-header">{{ __('Login') }}</div>
 
-                <div class="card-body">
+                <div class="card-body ">
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
-        <div class="mb-3">
+        <div class="mb-3 ">
             <label for="email" class="form-label">{{ __('Email Address') }}</label>
             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
             @error('email')

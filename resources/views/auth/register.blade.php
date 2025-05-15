@@ -63,15 +63,15 @@
 
                         <div class="row mb-3">
                             <label for="role_id" class="col-md-4 col-form-label text-md-end">Role</label>
-                        
+                            
                             <div class="col-md-6">
                                 <select name="role_id" id="role_id" class="form-select" required>
                                     <option value="">-- Pilih Role --</option>
                                     @foreach(\App\Models\Role::all() as $role)
-                                        <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                        <option value="{{ $role->id }}" {{ (isset($selectedRole) && $selectedRole == $role->id) ? 'selected' : '' }}>{{ $role->name }}</option>
                                     @endforeach
                                 </select>
-                        
+                            
                                 @error('role_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -95,3 +95,16 @@
     </div>
 </div>
 @endsection
+
+@php
+    // Ambil segmen URL
+    $segments = request()->segments();
+    // Cari tahu apakah ada 'admin' dalam segments
+    $isAdminRoute = in_array('admin', $segments);
+
+    $selectedRole = null;
+    if ($isAdminRoute) {
+        // Jika 'admin' ada di URL, set role_id ke 1 (atau ID admin sesuai database)
+        $selectedRole = 1; // Misalnya, ID 1 adalah untuk admin
+    }
+@endphp
