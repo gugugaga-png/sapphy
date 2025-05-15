@@ -49,6 +49,6 @@ class User extends Authenticatable
     // Accessor untuk profile_photo dengan default fallback
     public function getProfilePhotoAttribute($value)
     {
-        return $value ?? 'image/user.svg';
+        return $value ?? 'user.svg';
     }
 }
