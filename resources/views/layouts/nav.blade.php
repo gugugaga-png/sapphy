@@ -39,7 +39,8 @@
               @if(auth()->user()->profile_photo)
               <img src="{{ asset('storage/' . auth()->user()->profile_photo) }}" alt="Foto Profil" style="width: 100%; height: 100%; object-fit: cover;">
               @else
-              <img src="{{ asset('image/default-avatar.jpg') }}" alt="Default Avatar" style="width: 100%; height: 100%; object-fit: cover;">
+              <img src="{{ asset('image/user.png') }}" alt="Default Avatar"
+                         style="width: 100%; height: 100%; object-fit: cover;">
               @endif
             </div>
           </a>
@@ -82,8 +83,8 @@
         @if(auth()->check() && auth()->user()->profile_photo)
         <img src="{{ asset('storage/' . auth()->user()->profile_photo) }}" alt="Foto Profil" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
         @else
-        <img src="{{ asset('image/default-avatar.jpg') }}" alt="Default Avatar"
-                  style="width: 100%; height: 100%; object-fit: cover;">
+        <img src="{{ asset('image/user.png') }}" alt="Default Avatar"
+                         style="width: 100%; height: 100%; object-fit: cover;">
         @endif
       </div>
       <div>

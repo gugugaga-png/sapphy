@@ -32,7 +32,8 @@
                     <img src="{{ asset('storage/' . auth()->user()->profile_photo) }}" alt="Foto Profil"
                          style="width: 100%; height: 100%; object-fit: cover;">
                 @else
-                    <img src="{{ asset('image/default-avatar.jpg') }}" alt="Default Avatar"
+                
+                    <img src="{{ asset('image/user.png') }}" alt="Default Avatar"
                          style="width: 100%; height: 100%; object-fit: cover;">
                 @endif
             </div>
