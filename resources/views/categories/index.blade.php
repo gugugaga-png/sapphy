@@ -11,11 +11,7 @@
 
     <div class="page-header d-flex justify-content-between align-items-center">
         <h1 class="page-title">Daftar Kategori</h1>
-        @if(auth()->user()->role->name === 'admin')
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createCategoryModal">
-                <i class="ti ti-plus"></i> Tambah Kategori
-            </button>
-        @endif
+    
     </div>
 
     <div class="card mb-4">
