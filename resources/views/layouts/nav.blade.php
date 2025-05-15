@@ -1,8 +1,9 @@
 <header class="navbar navbar-expand-md d-print-none">
   <div class="container-fluid container-xl d-flex justify-content-between align-items-center">
-    <a href="/questions" class="navbar-brand navbar-brand-autodark me-3">
-      <img src="{{ asset('image/logo.svg') }}" alt="My Image" width="110" height="32">
-    </a>
+    <a href="{{ Route::is('questions.index') ? '/questions' : '#' }}" class="navbar-brand navbar-brand-autodark me-3">
+    <img src="{{ asset('image/logo.svg') }}" alt="My Image" width="110" height="32">
+</a>
+
 
     @if(auth()->check() && auth()->user()->role->name === 'admin')
     <ul class="navbar-nav d-none d-md-flex me-auto">
