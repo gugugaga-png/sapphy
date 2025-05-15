@@ -9,7 +9,7 @@ use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Middleware\RoleMiddleware;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\auth\RegisterController;
+use App\Http\Controllers\Auth\RegisterController;
 
 
 Route::get('/', [AuthController::class, 'showLoginForm']);
