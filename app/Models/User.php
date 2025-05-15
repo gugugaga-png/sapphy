@@ -46,9 +46,5 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class);
     }
 
-    // Accessor untuk profile_photo dengan default fallback
-    public function getProfilePhotoAttribute($value)
-    {
-        return $value ?? 'user.svg';
-    }
+    
 }
