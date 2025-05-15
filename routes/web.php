@@ -11,7 +11,7 @@ use App\Http\Middleware\RoleMiddleware;
 use App\Http\Controllers\ProfileController;
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('auth');
 });
 
 Auth::routes();
