@@ -33,7 +33,7 @@
                          style="width: 100%; height: 100%; object-fit: cover;">
                 @else
                 
-                    <img src="{{ asset('image/user.svg') }}" alt="Default Avatar"
+                    <i class="bi bi-person-circle" alt="Default Avatar"
                          style="width: 100%; height: 100%; object-fit: cover;">
                 @endif
             </div>
