@@ -67,7 +67,7 @@
 
 
                         {{-- Hidden role_id --}}
-                        <input type="hidden" name="role_id" value="{{ $selectedRole }}">
+        
 
                         <div class="d-grid gap-2 mb-3">
                             <button type="submit" class="btn btn-primary">
