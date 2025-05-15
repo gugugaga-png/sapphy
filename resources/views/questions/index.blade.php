@@ -29,13 +29,26 @@
         <div class="col-12 col-md-2 d-none d-md-flex flex-column align-items-center order-md-3 mb-4 mb-md-0">
             <div class="" style="width: 100px; height: 100px; overflow: hidden; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                 @if(auth()->check() && auth()->user()->profile_photo)
-                    <img src="{{ asset('storage/' . auth()->user()->profile_photo) }}" alt="Foto Profil"
-                         style="width: 100%; height: 100%; object-fit: cover;">
-                @else
-                
-                    <i class="bi bi-person-circle" alt="Default Avatar"
-                         style="width: 100%; height: 100%; object-fit: cover;">
-                @endif
+    <img src="{{ asset('storage/' . auth()->user()->profile_photo) }}" alt="Foto Profil"
+         style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
+@else
+    <div style="
+        width: 100px;
+        height: 100px;
+        background-color: #6c757d; /* abu-abu */
+        color: white;
+        font-weight: bold;
+        font-size: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        user-select: none;
+    ">
+        {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
+    </div>
+@endif
+
             </div>
             <div class="fs-2 fw-semibold text-center mt-2">
                 Hi, {{ $users->name }}
