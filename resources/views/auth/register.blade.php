@@ -65,12 +65,8 @@
                             <label for="role_id" class="col-md-4 col-form-label text-md-end">Role</label>
                             
                             <div class="col-md-6">
-                                <select name="role_id" id="role_id" class="form-select" required>
-                                    <option value="">-- Pilih Role --</option>
-                                    @foreach(\App\Models\Role::all() as $role)
-                                        <option value="{{ $role->id }}" {{ (isset($selectedRole) && $selectedRole == $role->id) ? 'selected' : '' }}>{{ $role->name }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="hidden" name="role_id" id="role_id" value="2">
+                                <input type="text" readonly class="form-control-plaintext" value="User">
                             
                                 @error('role_id')
                                     <span class="invalid-feedback" role="alert">
@@ -102,7 +98,7 @@
     // Cari tahu apakah ada 'admin' dalam segments
     $isAdminRoute = in_array('admin', $segments);
 
-    $selectedRole = null;
+    $selectedRole = 2; // Set default role to 'User' (assuming role ID 2 is for User)
     if ($isAdminRoute) {
         // Jika 'admin' ada di URL, set role_id ke 1 (atau ID admin sesuai database)
         $selectedRole = 1; // Misalnya, ID 1 adalah untuk admin
