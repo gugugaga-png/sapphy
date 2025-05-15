@@ -54,7 +54,7 @@
                                         class="btn btn-sm btn-light bg-yellow-lt" 
                                         data-bs-toggle="modal" 
                                         data-bs-target="#editCategoryModal{{ $category->id }}">
-                                    <i class="bi bi-edit"></i> 
+                                    <i class="bi bi-pencil-square"></i> 
                                 </button>
                                 <form action="{{ route('categories.destroy', $category->id) }}" 
                                       method="POST" 
