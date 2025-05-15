@@ -80,27 +80,12 @@
     @auth
     <div class="d-flex align-items-center mb-4">
       <div class="me-3">
-       @if(auth()->check() && auth()->user()->profile_photo)
-    <img src="{{ asset('storage/' . auth()->user()->profile_photo) }}" alt="Foto Profil"
-         style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
-@else
-    <div style="
-        width: 100px;
-        height: 100px;
-        background-color: #6c757d; /* abu-abu */
-        color: white;
-        font-weight: bold;
-        font-size: 40px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 50%;
-        user-select: none;
-    ">
-        {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
-    </div>
-@endif
-
+        @if(auth()->check() && auth()->user()->profile_photo)
+        <img src="{{ asset('storage/' . auth()->user()->profile_photo) }}" alt="Foto Profil" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+        @else
+        <img src="{{ asset('image/user.svg') }}" alt="Default Avatar"
+                         style="width: 100%; height: 100%; object-fit: cover;">
+        @endif
       </div>
       <div>
         <span>Hi, {{ auth()->user()->name }}</span>
