@@ -2,6 +2,13 @@
 
 @section('content')
 <div class="container py-3">
+    {{-- Tambahkan di dalam kontainer, di luar elemen .page-header --}}
+@if(auth()->user()->role->name === 'admin')
+    <button type="button" class="btn btn-dark position-fixed bottom-0 end-0 m-4 shadow" data-bs-toggle="modal" data-bs-target="#createCategoryModal">
+        <i class="ti ti-plus"></i> Tambah Kategori
+    </button>
+@endif
+
     <div class="page-header d-flex justify-content-between align-items-center">
         <h1 class="page-title">Daftar Kategori</h1>
         @if(auth()->user()->role->name === 'admin')
