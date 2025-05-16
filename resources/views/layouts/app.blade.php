@@ -23,7 +23,7 @@
 <body class="bg-gray-50 text-gray-900 font-sans antialiased">
     {{-- Alert sukses --}}
     @if(session('success'))
-<div class="alert alert-success alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-4 shadow-sm px-3 py-2 small d-flex align-items-center gap-2" role="alert" style="z-index: 1050; min-width: 250px;">
+<div class="alert alert-success alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-4 shadow-sm px-3 py-2 small d-flex align-items-center gap-2  mt-4" role="alert" style="z-index: 1050; min-width: 250px;">
     <i class="bi bi-check-circle-fill fs-5"></i>
     <div>
         <strong>Berhasil!</strong><br>
@@ -37,7 +37,7 @@
 @endif
 
 @if(session('error'))
-<div class="alert alert-danger alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-4 shadow-sm px-3 py-2 small d-flex align-items-center gap-2" role="alert" style="z-index: 1050; min-width: 250px;">
+<div class="alert alert-danger alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-4 shadow-sm px-3 py-2 small d-flex align-items-center gap-2  mt-4" role="alert" style="z-index: 1050; min-width: 250px;">
     <i class="bi bi-exclamation-triangle-fill fs-5"></i>
     <div>
         <strong>Gagal!</strong><br>
