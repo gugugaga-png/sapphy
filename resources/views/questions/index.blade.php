@@ -89,11 +89,12 @@
                         <div class="text-end">
                             <a href="/questions/{{ $question->id }}" class="btn btn-dark btn-sm">Jawab</a>
                             @if(auth()->user()->role->name === 'admin')
+        
                                 <form action="{{ route('questions.destroy', $question->id) }}" method="POST" style="display:inline-block;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-light bg-red-lt btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus pertanyaan ini?')">
-                                        <i class="bi bi-trash"></i>
+                                        <i class="bi bi-trash">hapus</i>
                                     </button>
                                 </form>
                             @endif
