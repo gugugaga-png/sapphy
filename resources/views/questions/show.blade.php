@@ -24,10 +24,12 @@
                         </div>
                     </div>
 
-                    <div class="py-2 px-3  fw-bold fs-4">
-                        {{ $question->title }}<br>
-                        <div class="fw-normal fs-5 pt-2">{{ $question->content }}</div>
-                    </div>
+                    <div class="py-2 px-3 fw-bold fs-4 text-wrap">
+    {{ $question->title }}<br>
+    <div class="fw-normal fs-5 pt-2 text-wrap">{{ $question->content }}</div>
+</div>
+
+
                 </div>
 
                 <div class="answer-section mt-4">
@@ -46,9 +48,9 @@
                             <div>
                                 <div class="fw-bold">{{ $answer->user->name }}</div>
                                 <div class="text-muted">{{ $answer->created_at->diffForHumans() }}</div>
-                                <div class="py-2 px-3  fs-5 answer-content flex-grow-1">
-                                    {{ $answer->content }}
-                                </div>
+                                <div class="py-2 px-3 fs-5 answer-content flex-grow-1 text-wrap">
+    {{ $answer->content }}
+</div>
                             </div>
 
                         </div>
