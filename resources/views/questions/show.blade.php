@@ -49,7 +49,10 @@
                                 @if($answer->user->profile_photo)
                                     <img src="{{ asset('storage/' . $answer->user->profile_photo) }}" alt="Foto Profil {{ $answer->user->name }}"  style="width: 100%; height: 100%; object-fit: cover;">
                                 @else
-                                    <img src="{{ asset('image/default-avatar.jpg') }}" alt="Default Avatar"  style="width: 100%; height: 100%; object-fit: cover;">
+                                     <img src="{{ asset('image/user.svg') }}" 
+     alt="Default Avatar"
+     class="img-fluid rounded-circle object-fit-cover" 
+     style="width: 50px; height: 50px;">
                                 @endif
                             </div>
                             <div>
