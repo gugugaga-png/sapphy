@@ -48,9 +48,10 @@
                             <div>
                                 <div class="fw-bold">{{ $answer->user->name }}</div>
                                 <div class="text-muted">{{ $answer->created_at->diffForHumans() }}</div>
-                                <div class="py-2 px-3 fs-5 answer-content flex-grow-1 text-wrap">
+                                <div class="py-2 px-3 fs-5 answer-content flex-grow-1 text-break w-100" style="overflow-wrap: break-word;">
     {{ $answer->content }}
 </div>
+
                             </div>
 
                         </div>
