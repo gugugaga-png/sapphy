@@ -3,28 +3,38 @@
 @section('content')
 <div class="container py-3">
     {{-- Tambahkan di dalam kontainer, di luar elemen .page-header --}}
- @if(auth()->user()->role->name === 'admin')
-    <button type="button" class="btn btn-dark mb-3 shadow" data-bs-toggle="modal" data-bs-target="#createCategoryModal">
-        <i class="bi bi-plus"></i> Tambah Kategori
-    </button>
-    @endif
+@if(auth()->user()->role->name === 'admin')
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050;">
+        <button type="button" class="btn btn-dark shadow rounded-circle" 
+                data-bs-toggle="modal" data-bs-target="#createCategoryModal"
+      >
+            <i class="bi bi-plus fs-4"></i>
+        </button>
+    </div>
+@endif
+
 
     <div class="page-header d-flex justify-content-between align-items-center">
         <h1 class="page-title">Daftar Kategori</h1>
     </div>
 
     <div class="card mb-4">
-        <div class="card-body">
-            <form method="GET" action="{{ route('categories.index') }}">
-                <div class="input-group">
-                    <input type="text" name="search" class="form-control" placeholder="Cari kategori..." value="{{ request('search') }}">
-                    <button class="btn btn-outline-primary" type="submit">
-                        <i class="ti ti-search"></i> Cari
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
+    <div class="card-body">
+        <form method="GET" action="{{ route('categories.index') }}">
+            <div class="row g-2 align-items-center">
+                <div class="col-12 col-md-9">
+                    <input type="text" name="search" class="form-control" placeholder="Cari kategori..." value="{{ request('search') }}">
+                </div>
+                <div class="col-12 col-md-3 d-grid">
+                    <button class="btn btn-dark" type="submit">
+                        <i class="bi bi-search me-1"></i> Cari
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 
     <div class="card">
         <div class="card-body">
