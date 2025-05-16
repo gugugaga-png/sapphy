@@ -24,10 +24,13 @@
                         </div>
                     </div>
 
-                    <div class="py-2 px-3 fw-bold fs-4 text-wrap">
+                    <div class="py-2 px-3 fw-bold fs-4 text-break w-100" style="overflow-wrap: break-word;">
     {{ $question->title }}<br>
-    <div class="fw-normal fs-5 pt-2 text-wrap">{{ $question->content }}</div>
+    <div class="fw-normal fs-5 pt-2 text-break w-100" style="overflow-wrap: break-word;">
+        {{ $question->content }}
+    </div>
 </div>
+
 
 
                 </div>
