@@ -7,7 +7,7 @@
     <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 1050;">
         <button type="button" class="btn btn-dark shadow rounded-circle" 
                 data-bs-toggle="modal" data-bs-target="#createCategoryModal"
-      >
+                style="width: 60px; height: 60px;">
             <i class="bi bi-plus fs-4"></i>
         </button>
     </div>
