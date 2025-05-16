@@ -40,53 +40,61 @@
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-hover table-striped table-vcenter">
-                    <thead class="table-light">
-                        <tr>
-                            <th>#</th>
-                            <th>Nama Kategori</th>
-                            <th>Jumlah Pertanyaan</th>
-                            @if(auth()->user()->role->name === 'admin')
-                                <th>Aksi</th>
-                            @endif
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse ($categories as $index => $category)
-                            <tr>
-                                <td>{{ $index + 1 }}</td>
-                                <td>{{ $category->name }}</td>
-                                <td>{{ $category->questions_count }}</td>
-                                @if(auth()->user()->role->name === 'admin')
-                                    <td>
-                                        <div class="d-flex flex-wrap gap-2">
-                                            <button type="button"
-                                                    class="btn btn-sm btn-light bg-yellow-lt"
-                                                    data-bs-toggle="modal"
-                                                    data-bs-target="#editCategoryModal{{ $category->id }}">
-                                                <i class="bi bi-pencil-square"></i>
-                                        </button>
-                                        <form action="{{ route('categories.destroy', $category->id) }}"
-                                            method="POST"
-                                            onsubmit="return confirm('Yakin ingin menghapus kategori ini beserta semua pertanyaannya?');">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-light bg-red-lt ">
-                                                <i class="bi bi-trash"></i>
-                                        </button>
-                                </form>
-                            </div>
-                        </td>
-                    @endif
-                    </tr>
-                @empty
-                    <tr>
-                        <td colspan="{{ auth()->user()->role->name === 'admin' ? 4 : 3 }}" class="text-center text-muted">
-                            Tidak ada kategori.
-                        </td>
-                    </tr>
-                @endforelse
-                </tbody>
-            </table>
+    <thead class="table-light">
+        <tr>
+            <th>#</th>
+            <th>Nama Kategori</th>
+            <th>Jumlah Pertanyaan</th>
+            @if(auth()->user()->role->name === 'admin')
+                <th class="text-end">Aksi</th>
+            @endif
+        </tr>
+    </thead>
+    <tbody>
+        @forelse ($categories as $index => $category)
+            <tr>
+                <td>{{ $index + 1 }}</td>
+                <td>{{ $category->name }}</td>
+                <td>{{ $category->questions_count }}</td>
+                @if(auth()->user()->role->name === 'admin')
+                    <td class="text-end">
+                        <div class="dropdown">
+                            <button class="btn btn-light text-dark p-0" type="button" id="dropdownMenuButton{{ $category->id }}" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton{{ $category->id }}">
+                                <li>
+                                    <button type="button"
+                                        class="dropdown-item"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#editCategoryModal{{ $category->id }}">
+                                        Edit
+                                    </button>
+                                </li>
+                                <li>
+                                    <form action="{{ route('categories.destroy', $category->id) }}"
+                                          method="POST"
+                                          onsubmit="return confirm('Yakin ingin menghapus kategori ini beserta semua pertanyaannya?');">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="dropdown-item text-danger">Hapus</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
+                @endif
+            </tr>
+        @empty
+            <tr>
+                <td colspan="{{ auth()->user()->role->name === 'admin' ? 4 : 3 }}" class="text-center text-muted">
+                    Tidak ada kategori.
+                </td>
+            </tr>
+        @endforelse
+    </tbody>
+</table>
+
             </div>
 
             <div class="mt-4">
