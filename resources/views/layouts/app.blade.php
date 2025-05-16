@@ -23,36 +23,33 @@
 <body class="bg-gray-50 text-gray-900 font-sans antialiased">
     {{-- Alert sukses --}}
     @if(session('success'))
-    <div class="alert alert-success bg-dark alert-dismissible fade show position-fixed bottom-0 end-0 m-4 shadow-lg" role="alert" style="z-index: 1050;">
-        <div class="alert-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-              stroke-linecap="round" stroke-linejoin="round" class="icon alert-icon icon-2">
-              <path d="M5 12l5 5l10 -10" />
-            </svg>
-        </div>
-        <div>
-            <h4 class="alert-heading">Berhasil!</h4>
-            <div class="alert-description">
-                {{ session('success') }}
-            </div>
+<div class="alert alert-success alert-dismissible fade show position-fixed bottom-0 end-0 m-4 shadow-sm px-3 py-2 small d-flex align-items-center gap-2" role="alert" style="z-index: 1050; min-width: 250px;">
+    <i class="bi bi-check-circle-fill fs-5"></i>
+    <div>
+        <strong>Berhasil!</strong><br>
+        {{ session('success') }}
+        <div class="progress mt-2" style="height: 3px;">
+            <div class="progress-bar bg-white progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%;" id="success-progress"></div>
         </div>
     </div>
-    @endif
+    <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
 
-    {{-- Alert error --}}
-    @if(session('error'))
-    <div class="toast-container position-fixed bottom-0 end-0 p-3 z-50">
-        <div class="toast show align-items-center text-white bg-danger border-0" role="alert">
-            <div class="d-flex">
-                <div class="toast-body">
-                    {{ session('error') }}
-                </div>
-                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
+@if(session('error'))
+<div class="alert alert-danger alert-dismissible fade show position-fixed bottom-0 end-0 m-4 shadow-sm px-3 py-2 small d-flex align-items-center gap-2" role="alert" style="z-index: 1050; min-width: 250px;">
+    <i class="bi bi-exclamation-triangle-fill fs-5"></i>
+    <div>
+        <strong>Gagal!</strong><br>
+        {{ session('error') }}
+        <div class="progress mt-2" style="height: 3px;">
+            <div class="progress-bar bg-white progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%;" id="error-progress"></div>
         </div>
     </div>
-    @endif
+    <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+@endif
+
 
     <div id="app">
         <div class="page">
@@ -94,6 +91,34 @@
                 setTimeout(() => alertEl.remove(), 500);
             }
         }, 5000);
+
+         function animateProgressBar(id) {
+        const progressBar = document.getElementById(id);
+        let width = 100;
+        const interval = setInterval(() => {
+            width -= 2;
+            if (width <= 0) {
+                clearInterval(interval);
+                const alertEl = progressBar.closest('.alert');
+                if (alertEl) {
+                    alertEl.classList.remove('show');
+                    alertEl.classList.add('fade');
+                    setTimeout(() => alertEl.remove(), 500);
+                }
+            } else {
+                progressBar.style.width = width + "%";
+            }
+        }, 100); // 2% setiap 100ms → 5 detik
+    }
+
+    window.onload = function () {
+        if (document.getElementById('success-progress')) {
+            animateProgressBar('success-progress');
+        }
+        if (document.getElementById('error-progress')) {
+            animateProgressBar('error-progress');
+        }
+    };
     </script>
 
     <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta20/dist/js/tabler.min.js"></script>
